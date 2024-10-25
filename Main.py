@@ -73,8 +73,6 @@ class User:
             account_numbers = list(self.bank.users.keys())
             if account_num in account_numbers:
                 person = self.bank.users[account_num]
-                # person.deposite_balance(amount)
-                # self.withdraw_money(amount)
                 person.__balance += amount
                 self.__balance -= amount
                 print(f'Money transferred successfully!!')
@@ -117,6 +115,14 @@ class Admin:
         else:
             self.bank.loan_feature = True
             print('Loan feature turn on successfully!!')
+
+    def isBankrupt(self):
+        if self.bank.isBankrupt:
+            self.bank.isBankrupt = False
+            print('Bank working Normally!!')
+        else:
+            self.bank.isBankrupt = True
+            print('The Bank is Bankrupt!!')
 
 bank = Bank()
 admin = Admin(bank)
@@ -177,7 +183,6 @@ def User_menu():
                             break
                         else:
                             print('Invalid choise!!')
-                    # break
                 else:
                     print('Incorrect password or user not exist!!')
 
@@ -209,8 +214,9 @@ def Admin_menu():
                     print('3.Show users')
                     print('4.Show total balance')
                     print('5.Show loan amount')
-                    print('6.toggle loan feature')
-                    print('7.Exit')
+                    print('6.Toggle loan feature')
+                    print('7.Is Bankrupt')
+                    print('8.Exit')
                 
                     option = int(input('Enter Your choise : '))
 
@@ -233,6 +239,8 @@ def Admin_menu():
                     elif option == 6:
                         admin.loan_on_off()
                     elif option == 7:
+                        admin.isBankrupt()
+                    elif option == 8:
                         break
                     else:
                         print('Invalid Choise!!')
