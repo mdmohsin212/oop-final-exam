@@ -73,8 +73,6 @@ class User:
             account_numbers = list(self.bank.users.keys())
             if account_num in account_numbers:
                 person = self.bank.users[account_num]
-                # person.deposite_balance(amount)
-                # self.withdraw_money(amount)
                 person.__balance += amount
                 self.__balance -= amount
                 print(f'Money transferred successfully!!')
